@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @operation.name %>
+</p>
+
+<p>
+  <b>Ope kind:</b>
+  <%= @operation.try(:ope_kind).name %>
+</p>
+
+<p>
+  <b>Num version:</b>
+  <%= @operation.num_version %>
+</p>
+
+<p>
+  <b>Info:</b>
+  <%= @operation.info %>
+</p>
+
+
+<%= link_to 'Edit', edit_operation_path(@operation) %> |
+<%= link_to 'Back', operations_path %>

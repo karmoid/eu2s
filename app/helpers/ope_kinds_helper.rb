@@ -1,0 +1,2 @@
+module OpeKindsHelper
+end

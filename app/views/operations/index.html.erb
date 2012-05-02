@@ -1,0 +1,41 @@
+<h1>Listing operations</h1>
+<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Ope kind</th>
+    <th>Num version</th>
+    <th>Info</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<%= current_user.email %>
+<% @operations.each do |operation| %>
+  <tr>
+    <td><%= operation.name %></td>
+    <td><%= operation.try(:ope_kind).name %></td>
+    <td><%= operation.num_version %></td>
+    <td><%= operation.info %></td>
+    <td>
+		<% if (current_user.has_role? :admin) %>
+			<%= link_to 'Show', operation %>
+		<% end %>
+	</td>
+    <td>
+		<% if (current_user.has_role? :admin) %>
+			<%= link_to 'Edit', edit_operation_path(operation) %>
+		<% end %>	
+	</td>
+    <td>
+		<% if (current_user.has_role? :admin) %>
+			<%= link_to 'Destroy', operation, confirm: 'Are you sure?', method: :delete %>
+		<% end %>	
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Operation', new_operation_path %>
